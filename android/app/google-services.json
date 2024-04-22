@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "401210009029",
+    "project_id": "filepicker-782b4",
+    "storage_bucket": "filepicker-782b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401210009029:android:5d918132573fe7ce4917ac",
+        "android_client_info": {
+          "package_name": "com.example.file_pick"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArUytNPRnLt-n81RxqWvgzYBHFpquXWKU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

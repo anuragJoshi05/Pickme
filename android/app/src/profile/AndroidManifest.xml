@@ -1,0 +1,18 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.file_pick"> <!-- Replace with your actual package name -->
+
+    <!-- The INTERNET permission is required for development... -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- Firebase Analytics -->
+    <application>
+        <!-- ... other application tags and elements ... -->
+
+        <!-- Add this meta-data tag below within the application tag -->
+        <meta-data
+            android:name="com.google.firebase.analytics.app"
+            android:value="1:401210009029:android:5d918132573fe7ce4917ac"/> <!-- Replace with your actual Google App ID -->
+    </application>
+
+    <!-- Add other necessary tags and permissions as required -->
+</manifest>
