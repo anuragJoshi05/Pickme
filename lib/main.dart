@@ -1,12 +1,12 @@
 import 'dart:io';
 import 'package:file_pick/services.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:path/path.dart';
 
-
-Future<void> main() async{
+Future<void> main() async {
   //next two code lines ensure that this exception that i have mentioned below should not occur.
   // this exception- I/flutter (14378): [core/no-app] No Firebase App '[DEFAULT]' has been created - call Firebase.initializeApp()
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +18,6 @@ Future<void> main() async{
       projectId: 'filepicker-782b4',
       storageBucket: 'filepicker-782b4.appspot.com',
     ),
-
   );
   runApp(const MyApp());
 }
@@ -32,6 +31,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   File? file;
+  UploadTask? task;
   late String fileName;
 
   Future<void> selectFile() async {
@@ -52,12 +52,25 @@ class _MyAppState extends State<MyApp> {
     } else {
       final fileName = basename(file!.path);
       final destination = 'files/$fileName';
-      MyFirebaseStorage.uploadFile(destination, file!);
+      task = MyFirebaseStorage.uploadFile(destination, file!);
       setState(() {
         //refreshes the widget
       });
     }
   }
+
+  Widget uploadStatus(UploadTask task) => StreamBuilder<TaskSnapshot>(
+      stream: task.snapshotEvents,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          final snap = snapshot.data!;
+          final progress = snap.bytesTransferred / snap.totalBytes;
+          final uploadPercent = (progress * 100).toStringAsFixed(2);
+          return Text('$uploadPercent %');
+        } else {
+          return Container();
+        }
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -91,6 +104,7 @@ class _MyAppState extends State<MyApp> {
                     uploadFile();
                   },
                   child: const Text('UPLOAD FILE')),
+              task != null ? uploadStatus(task!) : Container(),
             ],
           ),
         ),
