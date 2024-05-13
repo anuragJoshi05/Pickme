@@ -1,13 +1,13 @@
 import 'dart:io';
 import 'package:file_pick/services.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_storage/firebase_storage.dart';.
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:path/path.dart';
 
 Future<void> main() async {
-  //next two code lines ensure that this exception that i have mentioned below should not occur.
+  //next two code lines ensure that this exception that i have mentioned below should not occur in it
   // this exception- I/flutter (14378): [core/no-app] No Firebase App '[DEFAULT]' has been created - call Firebase.initializeApp()
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
