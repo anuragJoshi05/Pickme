@@ -99,7 +99,7 @@ class _MyAppState extends State<MyApp> {
               const SizedBox(
                 height: 20,
               ),
-              ElevatedButton(
+              CustomButton(
                   onPressed: () {
                     uploadFile();
                   },
