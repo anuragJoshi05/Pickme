@@ -7,7 +7,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:path/path.dart';
 
 Future<void> main() async {
-  //next two code lines ensure that this exception that i have mentioned below should not occur in it
+  //next two code lines of the main ensure that this exception that i have mentioned below should not occur in it
   // this exception- I/flutter (14378): [core/no-app] No Firebase App '[DEFAULT]' has been created - call Firebase.initializeApp()
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
